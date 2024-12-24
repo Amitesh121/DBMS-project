@@ -7,6 +7,8 @@
 class Column{
     private:
         std::string name;
+        std::string type;
+        std::string parentTable;
         std::vector<std::string> data;
     public:
         Column(std::string name);

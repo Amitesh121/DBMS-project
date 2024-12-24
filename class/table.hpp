@@ -13,7 +13,7 @@ class Table{
         bool setName(std::string name);
         std::string getName();
         int getNoOfColumns();
-        std::vector<std::string> getColumns();
+        std::vector<std::pair<std::string, Column*>> getColumnsNameList();
         bool addColumn(std::string columnName);
         bool removeColumn(std::string columnName);
 };

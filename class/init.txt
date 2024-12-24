@@ -1,0 +1,5 @@
+TODO: (note for Amitesh)
+I've made tables.hpp and its done, so 
+1 => make a tables.cpp defining the functions these are pretty similar to database one.
+2 => make ui interactive with these databases and tables
+3 => if get more time do "sOmEsTuFfS wItH cOlUmNs As WeLl"
