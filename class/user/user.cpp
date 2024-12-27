@@ -20,19 +20,19 @@ void User::handleUserInput() {
         switch (choice) {
         case 1:
             std::cout << "Insert Record selected.\n";
-            // fucntion for insertion
+            //insertRecord();
             break;
         case 2:
             std::cout << "Delete Record selected.\n";
-            // fucntion for insertion
+            //deleteRecord();
             break;
         case 3:
             std::cout << "Update Record selected.\n";
-            // fucntion for insertion
+            ///updateRecord();
             break;
         case 4:
             std::cout << "View All Records selected.\n";
-            // fucntion for insertion
+            //viewAllRecords();
             break;
         case 5:
             std::cout << "Exiting the program.\n";
@@ -42,3 +42,4 @@ void User::handleUserInput() {
         }
     } while (choice != 5);
 }
+
