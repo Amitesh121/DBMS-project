@@ -1,0 +1,3 @@
+I've created the Database and tables funtionality and after this i will work on loading data from disk
+
+tell what will you be working on @Amitesh

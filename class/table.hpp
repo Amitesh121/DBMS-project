@@ -16,6 +16,7 @@ class Table{
         std::vector<std::pair<std::string, Column*>> getColumnsNameList();
         bool addColumn(std::string columnName);
         bool removeColumn(std::string columnName);
+        bool addRow(std::vector<std::string> data);
 };
 
 

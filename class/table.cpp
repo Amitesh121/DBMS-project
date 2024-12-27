@@ -46,3 +46,13 @@ bool Table::removeColumn(std::string columnName) {
     }
     return false;
 }
+
+bool Table::addRow(std::vector<std::string> data) {
+    if (data.size() != columns.size()) {
+        return false;
+    }
+    for (int i = 0; i < columns.size(); i++) {
+        columns[i]->addData(data[i]);
+    }
+    return true;
+}
