@@ -17,6 +17,10 @@ class Table{
         bool addColumn(std::string columnName);
         bool removeColumn(std::string columnName);
         bool addRow(std::vector<std::string> data);
+
+        //function for loading data
+        void loadTable();
+        void saveTable();
 };
 
 

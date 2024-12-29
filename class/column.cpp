@@ -27,12 +27,12 @@ std::vector<std::string> Column::getData(){
     return data;
 }
 
-bool Column::addData(std::string data){
-    this->data.push_back(data);
-    return true;
-}
+// bool Column::addData(std::string data){
+//     this->data.push_back(data);
+//     return true;
+// }
 
-bool Column::removeData(std::string data){
-    data.erase(std::remove(data.begin(), data.end(), data), data.end());
-    return true;
-}
+// bool Column::removeData(std::string data){
+//     data.erase(std::remove(data.begin(), data.end(), data), data.end());
+//     return true;
+// }

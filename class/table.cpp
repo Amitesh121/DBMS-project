@@ -47,12 +47,20 @@ bool Table::removeColumn(std::string columnName) {
     return false;
 }
 
-bool Table::addRow(std::vector<std::string> data) {
-    if (data.size() != columns.size()) {
-        return false;
-    }
-    for (int i = 0; i < columns.size(); i++) {
-        columns[i]->addData(data[i]);
-    }
-    return true;
+// bool Table::addRow(std::vector<std::string> data) {
+//     if (data.size() != columns.size()) {
+//         return false;
+//     }
+//     for (int i = 0; i < columns.size(); i++) {
+//         columns[i]->addData(data[i]);
+//     }
+//     return true;
+// }
+
+void Table::loadTable() {
+    //not implemented yet
+}
+
+void Table::saveTable() {
+    //not implemented yet
 }

@@ -18,15 +18,15 @@ bool Database::addTable(std::string name){
     return true;
 }
 
-bool Database::removeTable(std::string name){
-    for(Table* table : tables){
-        if(table->getName() == name){
-            tables.erase(std::remove(tables.begin(), tables.end(), name), tables.end());
-            return true;
-        }
-    }
-    return false;
-}
+// bool Database::removeTable(std::string name){
+//     for(Table* table : tables){
+//         if(table->getName() == name){
+//             tables.erase(std::remove(tables.begin(), tables.end(), name), tables.end());
+//             return true;
+//         }
+//     }
+//     return false;
+// }
 
 std::vector<std::pair<std::string, Table*>> Database::getTablesNameList(){
     std::vector<std::pair<std::string, Table*>> tablesNameList;
@@ -38,4 +38,8 @@ std::vector<std::pair<std::string, Table*>> Database::getTablesNameList(){
 
 int Database::getNoOfTables(){
     return tables.size();
+}
+
+std::string Database::getName(){
+    return name;
 }

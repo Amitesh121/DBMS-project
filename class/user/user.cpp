@@ -30,7 +30,7 @@ void User::handleUserInput() {
             createTable();
             break;
         case 4:
-            deleteTable();
+            // deleteTable();
             break;
         case 5:
             viewDatabases();
@@ -90,24 +90,24 @@ void User::createTable() {
     std::cout << "Database not found.\n";
 }
 
-void User::deleteTable() {
-    std::string dbName, tableName;
-    std::cout << "Enter database name: ";
-    std::cin >> dbName;
-    for (Database* db : databases) {
-        if (db->getName() == dbName) {
-            std::cout << "Enter table name to delete: ";
-            std::cin >> tableName;
-            if (db->removeTable(tableName)) {
-                std::cout << "Table deleted successfully.\n";
-            } else {
-                std::cout << "Table not found.\n";
-            }
-            return;
-        }
-    }
-    std::cout << "Database not found.\n";
-}
+// void User::deleteTable() {
+//     std::string dbName, tableName;
+//     std::cout << "Enter database name: ";
+//     std::cin >> dbName;
+//     for (Database* db : databases) {
+//         if (db->getName() == dbName) {
+//             std::cout << "Enter table name to delete: ";
+//             std::cin >> tableName;
+//             if (db->removeTable(tableName)) {
+//                 std::cout << "Table deleted successfully.\n";
+//             } else {
+//                 std::cout << "Table not found.\n";
+//             }
+//             return;
+//         }
+//     }
+//     std::cout << "Database not found.\n";
+// }
 
 void User::viewDatabases() {
     std::cout << "Databases:\n";
