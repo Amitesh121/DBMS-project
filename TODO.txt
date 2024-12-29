@@ -1,6 +1,22 @@
-I've created the Database and tables funtionality and after this i will work on loading data from disk
-
-tell what will you be working on @Amitesh
-
 Code to run:
 g++ main.cpp ./class/user/user.cpp ./class/database.cpp ./class/column.cpp ./class/table.cpp -o prog
+
+
+
+Note: I've assumed that Table Names are unique right now
+Alright it took about 30 mins just to get things working since the errors were pretty huge.
+
+TODO:
+so i'm thinking to create a MFile class that will hold the file, while the user is interacting with it 
+i dont think it would be difficult to implement so try to work on it and try to ensure that the code atleast 
+compiles.
+
+Aim for MFile: 
+    1. It would be good and faster if we keep the file with our hold while the user is
+        interacting with the table as it would be much faster then loading it every time.
+    2. create functions that include :: addRow, editCell, and for sending data to tables and column
+
+I'm not sure if we would be holding the file while user is interacting but its good if we have as much abstraction 
+as possible since we gonna implement many functions later
+
+happy coding guys :)
