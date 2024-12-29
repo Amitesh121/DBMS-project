@@ -27,12 +27,18 @@ std::vector<std::string> Column::getData(){
     return data;
 }
 
-// bool Column::addData(std::string data){
-//     this->data.push_back(data);
-//     return true;
-// }
+bool Column::addData(std::string data){
+    this->data.push_back(data);
+    return true;
+}
 
-// bool Column::removeData(std::string data){
-//     data.erase(std::remove(data.begin(), data.end(), data), data.end());
-//     return true;
-// }
+bool Column::removeData(std::string data){ //bugs fixed here
+    for(int i = 0; i < this->data.size(); i++){
+        if(this->data[i] == data){
+            this->data.erase(this->data.begin() + i);
+            return true;
+        }
+    }
+    std::cout << "Data not found" << std::endl;
+    return false;
+}

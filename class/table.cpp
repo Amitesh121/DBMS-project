@@ -47,15 +47,16 @@ bool Table::removeColumn(std::string columnName) {
     return false;
 }
 
-// bool Table::addRow(std::vector<std::string> data) {
-//     if (data.size() != columns.size()) {
-//         return false;
-//     }
-//     for (int i = 0; i < columns.size(); i++) {
-//         columns[i]->addData(data[i]);
-//     }
-//     return true;
-// }
+bool Table::addRow(std::vector<std::string> data) { //bugs fixed here
+    if(data.size() != columns.size()){
+        std::cout << "Data size does not match with the number of columns" << std::endl;
+        return false;
+    }
+    for(int i = 0; i < columns.size(); i++){
+        columns[i]->addData(data[i]);
+    }
+    return true;
+}
 
 void Table::loadTable() {
     //not implemented yet
