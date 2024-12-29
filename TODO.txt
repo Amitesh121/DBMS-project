@@ -1,3 +1,6 @@
 I've created the Database and tables funtionality and after this i will work on loading data from disk
 
 tell what will you be working on @Amitesh
+
+Code to run:
+g++ main.cpp ./class/user/user.cpp ./class/database.cpp ./class/column.cpp ./class/table.cpp -o prog
