@@ -14,7 +14,9 @@ public:
     void deleteTable();
     void viewDatabases();
     void viewTables();
-private:
+    void saveDatabase();
+    void loadDatabase();
+
     std::vector<Database*> databases;
 };
 

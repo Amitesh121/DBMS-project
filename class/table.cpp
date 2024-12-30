@@ -1,4 +1,5 @@
 #include "table.hpp"
+#include "mFile.hpp"
 
 Table::Table(std::string name) {
     this->name = name;
@@ -59,9 +60,31 @@ bool Table::addRow(std::vector<std::string> data) { //bugs fixed here
 }
 
 void Table::loadTable() {
-    //not implemented yet
+    MFile file(name + ".csv");
+    if (MFile::fileExists(file.getFilePath())) {
+        std::vector<std::string> lines = file.readAllLines();
+        for (const std::string& line : lines) {
+            std::istringstream iss(line);
+            std::vector<std::string> row;
+            std::string cell;
+            while (std::getline(iss, cell, ',')) {
+                row.push_back(cell);
+            }
+            addRow(row);
+        }
+    }
 }
 
 void Table::saveTable() {
-    //not implemented yet
+    MFile file(name + ".csv");
+    std::vector<std::string> lines;
+    for (int i = 0; i < columns[0]->getNoOfData(); ++i) {
+        std::ostringstream oss;
+        for (size_t j = 0; j < columns.size(); ++j) {
+            oss << columns[j]->getData()[i];
+            if (j < columns.size() - 1) oss << ",";
+        }
+        lines.push_back(oss.str());
+    }
+    file.overwriteFile(lines);
 }

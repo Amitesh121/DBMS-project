@@ -8,6 +8,7 @@ class Database{
     private:
         std::string name;
         std::vector<Table*> tables;
+        
     public:
         Database(std::string name);
         bool setName(std::string name);
@@ -16,6 +17,8 @@ class Database{
         std::vector<std::pair<std::string, Table*>> getTablesNameList();
         bool addTable(std::string tableName);
         bool removeTable(std::string tableName);
+        void loadDatabase();
+        void saveDatabase();
 };
 
 #endif // DATABASE_HPP
