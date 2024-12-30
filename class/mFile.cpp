@@ -1,6 +1,6 @@
 #include "mFile.hpp"
 #include <sstream>
-#include <filesystem>
+#include <fstream>
 
 
 MFile::MFile(const std::string& path) : filePath(path) {}
@@ -94,7 +94,8 @@ void MFile::editCell(int rowIndex, int colIndex, const std::string& newValue) {
 }
 
 bool MFile::fileExists(const std::string& path) {
-    return std::filesystem::exists(path);
+    std::ifstream file(path);
+    return file.good();
 }
 
 std::string MFile::getFilePath() const {
