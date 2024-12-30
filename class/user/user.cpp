@@ -1,5 +1,7 @@
 #include <iostream>
 #include "user.h"
+#include "../dataBase.hpp"
+#include "../mFile.hpp"
 
 void User::displayMenu() {
     std::cout << "\nWelcome to our DB\n";
@@ -14,6 +16,7 @@ void User::displayMenu() {
 }
 
 void User::handleUserInput() {
+    //std::cout<<"USER INPUT LOADING";
     int choice;
     do {
         displayMenu();
@@ -30,7 +33,7 @@ void User::handleUserInput() {
             createTable();
             break;
         case 4:
-            // deleteTable();
+            deleteTable();
             break;
         case 5:
             viewDatabases();
@@ -41,6 +44,8 @@ void User::handleUserInput() {
         case 7:
             std::cout << "Exiting the program.\n";
             break;
+            case 8:
+            saveDatabase();
         default:
             std::cout << "Invalid choice. Please try again.\n";
         }
@@ -51,7 +56,14 @@ void User::createDatabase() {
     std::string dbName;
     std::cout << "Enter database name: ";
     std::cin >> dbName;
+    for (Database* db : databases) {
+        if (db->getName() == dbName) {
+            std::cout << "Database already exists.\n";
+            return;
+        }
+    }
     Database* db = new Database(dbName);
+    db->saveDatabase(); 
     databases.push_back(db);
     std::cout << "Database created successfully.\n";
 }
@@ -62,6 +74,7 @@ void User::deleteDatabase() {
     std::cin >> dbName;
     for (auto it = databases.begin(); it != databases.end(); ++it) {
         if ((*it)->getName() == dbName) {
+            (*it)->saveDatabase(); 
             delete *it;
             databases.erase(it);
             std::cout << "Database deleted successfully.\n";
@@ -90,24 +103,24 @@ void User::createTable() {
     std::cout << "Database not found.\n";
 }
 
-// void User::deleteTable() {
-//     std::string dbName, tableName;
-//     std::cout << "Enter database name: ";
-//     std::cin >> dbName;
-//     for (Database* db : databases) {
-//         if (db->getName() == dbName) {
-//             std::cout << "Enter table name to delete: ";
-//             std::cin >> tableName;
-//             if (db->removeTable(tableName)) {
-//                 std::cout << "Table deleted successfully.\n";
-//             } else {
-//                 std::cout << "Table not found.\n";
-//             }
-//             return;
-//         }
-//     }
-//     std::cout << "Database not found.\n";
-// }
+void User::deleteTable() {
+    std::string dbName, tableName;
+    std::cout << "Enter database name: ";
+    std::cin >> dbName;
+    for (Database* db : databases) {
+        if (db->getName() == dbName) {
+            std::cout << "Enter table name to delete: ";
+            std::cin >> tableName;
+            if (db->removeTable(tableName)) {
+                std::cout << "Table deleted successfully.\n";
+            } else {
+                std::cout << "Table not found.\n";
+            }
+            return;
+        }
+    }
+    std::cout << "Database not found.\n";
+}
 
 void User::viewDatabases() {
     std::cout << "Databases:\n";
@@ -132,3 +145,24 @@ void User::viewTables() {
     std::cout << "Database not found.\n";
 }
 
+void User::loadDatabase() {
+    MFile file("databases_list.csv");
+    if (MFile::fileExists(file.getFilePath())) {
+        std::vector<std::string> lines = file.readAllLines();
+        for (const std::string& dbName : lines) {
+            Database* db = new Database(dbName);
+            db->loadDatabase(); 
+            databases.push_back(db);
+        }
+    }
+}
+
+void User::saveDatabase() {
+    MFile file("databases_list.csv");
+    std::vector<std::string> dbNames;
+    for (Database* db : databases) {
+        db->saveDatabase(); 
+        dbNames.push_back(db->getName());
+    }
+    file.overwriteFile(dbNames);
+}
